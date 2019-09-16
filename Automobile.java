@@ -9,6 +9,45 @@ public class Automobile extends Vehicle {
 	public makerVehicle AutoMake;
 	public model AutoModel;
 	
+	Automobile()
+	{
+		super();
+		Trunk = true;
+		Ac = true;
+		Tint = false;
+		Owner = "Charles";
+		Title = "Mine";
+		AutoMake = new makerVehicle();
+		AutoModel = new model();
+	}
+	
+	Automobile(int MPG, int pass, int fc, model mo, makerVehicle ma)
+	{
+		super();
+		Trunk = true;
+		Ac = true;
+		Tint = true;
+		Owner = "Me";
+		Title = "IN Glove box.";
+		AutoMake = new makerVehicle();
+		AutoModel = new model();
+		updateVehicle();
+		
+	}
+	Automobile(model mo, makerVehicle ma, String clr , int ps, int mg, int fc, int ds, double ton, int yr, int ts, int top)
+	{
+		super( ps, fc, mg);
+		
+		Tint = false;
+		Trunk = true;
+		Ac = true;
+		Owner = "Me";
+		Title = "Yes";
+		AutoMake = new makerVehicle();
+		AutoModel = new model();
+		updateVehicle();
+	}
+	
 	public boolean isTrunk() 
 	{
 		return Trunk;
@@ -56,19 +95,51 @@ public class Automobile extends Vehicle {
 		}
 		return wheelCount;
 	}
+	private void updateVehicle() 
+	{
+		String [] trimPak = AutoModel. getPackageType();
+		int wCount, MPG, pass, fuelCap,tonnage;
+		String colour;
+		
+			try 
+			{ 
+				MPG = Integer.parseInt(trimPak[2]);
+				pass = Integer.parseInt(trimPak[3]);
+				fuelCap = Integer.parseInt(trimPak[4]);
+				
+			}
+			catch(Exception e) 
+			{
+				
+				MPG = 20;
+				pass = 4;
+				fuelCap = 20;
+				
+				System.out.println("Bad Package Type");
+			}
+			try 
+			{
+				tonnage = Integer.parseInt(trimPak[11]);
+			}
+			catch (Exception e) 
+			{
+				tonnage = 2;
+				System.out.println("Bad Trim Package");
+			}
+			super.mpg = MPG;
+			super.passengers = pass;
+			super.fuelcap = fuelcap;
+			super.tonnage = tonnage;
+			super.color = trimPak[3];
+	}
 	
 	int getdNumDoors()
 	{
 		return super.doors;
 	}
 	@Override
-	String getMakeandModel(String ModelName, String company) {
-		return MakeandModel;
-		
+	void getMakeandModel() {
+		AutoMake.getMaker();
+		AutoModel.getModelName();
 	}
-	String setMakeandModel(String newMakeandModel)
-		MakeandModel = newMakeandModel
-	
-	
-
-}
+	}

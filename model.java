@@ -9,7 +9,7 @@ public class model {
 	{
 		BodyType = "Truck";
 		ModelName = "Big";
-		PackageType = new String[] {"Wheels", "4", "MPG", "15", "Color", "Blue", "Seats", "2", "FuelCap", "20", "tonage", "1.234" };
+		PackageType = new String[] {"Wheels", "4", "MPG", "15", "Color", "Blue", "Seats", "2", "FuelCap", "20", "tonnage", "2" };
 	}
 	
 	model(String Bt, String Mn, String[] trimPackage)
